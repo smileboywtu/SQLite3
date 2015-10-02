@@ -5,7 +5,6 @@ this demon create the complete coffee shop database which can be used to manage 
 # Entitis Design
 
  - ## ER Diagram
-
 ![Alt Text](http://www.pythonschool.net/databases/images/coffee_shop_er_diagram.png "ER Diagram of coffee shop from python school")
 
  - ## Entity Description
