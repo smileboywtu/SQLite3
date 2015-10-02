@@ -5,7 +5,11 @@ this demon create the complete coffee shop database which can be used to manage 
 # Entitis Design
 
  - ## ER Diagram
+<<<<<<< HEAD
     ![Alt Text](http://www.pythonschool.net/databases/images/coffee_shop_er_diagram.png "ER Diagram of coffee shop from python school")
+=======
+![Alt Text](http://www.pythonschool.net/databases/images/coffee_shop_er_diagram.png "ER Diagram of coffee shop from python school")
+>>>>>>> 7fd9a1d51ed25839f41c82a12590230dc073f8db
 
  - ## Entity Description
     + Customer(**CustomerID**, FirstName, LastName, Street, Town, PostCode, TelephoneNumber, EMailAddress)
