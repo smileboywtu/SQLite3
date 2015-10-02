@@ -8,12 +8,12 @@ database just like operating the files.
 
 There is a tool for you to manage your local database which called **sqlitebroswer**.
 
-# Deamon
+# Demon
 
     ├── coffee-shop
     │   ├── coffee_shop.db
     │   ├── create-model.py
-    │   ├── deamon
+    │   ├── demon
     │   │   ├── movie.db
     │   │   ├── movie_worksheet.pdf
     │   │   └── select-like.py
