@@ -27,18 +27,18 @@ There is a tool for you to manage your local database which called **sqlitebrosw
 
 
 + Main Program:
-
-      Python3 manage-menu.py
-
+>Python3 manage-menu.py
 
 + Learn SQL:
-
-      You can just switch to the deamon dir and look at the PDF for details
+>You can just switch to the deamon dir and look at the **PDF** for details
 
 + Know More:
+>Just look at the other python source files
 
-      Just look at the other python source files
+# Online Tutorials
 
-Look at the online course [here][0]
+look at the online course [here][0]
+
+the complete coffee shop sample in the ./coffee-shop-complete dir.
 
 [0]: http://www.pythonschool.net/databases/introduction-to-databases/
