@@ -10,11 +10,11 @@ this demon create the complete coffee shop database which can be used to manage 
  - ## Entity Description
     + Customer(**CustomerID**, FirstName, LastName, Street, Town, PostCode, TelephoneNumber, EMailAddress)
 
-    + CustomerOrder(**OrderID**, Date, Time, *CustomerID*)
+    + CustomerOrder(**OrderID**, Date, Time, ***CustomerID***)
 
-    + OrderItem(**OrderItemID**, *OrderID*, *ProductID*, Quantity)
+    + OrderItem(**OrderItemID**, ***OrderID***, ***ProductID***, Quantity)
 
-    + Product(**ProductID**, Name, Price, *ProductTypeID*)
+    + Product(**ProductID**, Name, Price, ***ProductTypeID***)
 
     + ProductType(**ProductTypeID**, Description)
 
