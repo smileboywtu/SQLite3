@@ -4,40 +4,40 @@
 # import
 import sqlite3
 
-def show_all_data(db_name, table_name):
-    "show all the data of table from db"
+def query(db_name, sql, data):
     with sqlite3.connect(db_name) as db:
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM {0}".format(table_name))
+        cursor.execute("PRAGMA Foreign_Keys = ON")
+        cursor.execute(sql, data)
         result = cursor.fetchall()
+        db.commit()
         return result
+
+def show_all_data(db_name, table_name):
+    "show all the data of table from db"
+    sql = "SELECT * FROM {0}".format(table_name)
+    return query(db_name, sql, ())
 
 def insert_data(db_name, table_name, firstname, lastname, street, town, postcode, telephone, email):
     "insert new data"
-    with sqlite3.connect(db_name) as db:
-        cursor = db.cursor()
-        cursor.execute("""
-                    INSERT INTO {0}(FirstName, LastName, Street, Town, PostCode, TelephoneNumber, EMailAddress)
-                    VALUES (?,?,?,?,?,?,?)
-                """.format(table_name), (firstname, lastname, street, town, postcode, telephone, email,))
-        db.commit()
+    sql = """
+            INSERT INTO {0}(FirstName, LastName, Street, Town, PostCode, TelephoneNumber, EMailAddress)
+            VALUES (?,?,?,?,?,?,?)
+            """.format(table_name)
+    query(db_name, sql, (firstname, lastname, street, town, postcode, telephone, email,))
 
 def update_data(db_name, table_name, customerid, firstname, lastname, street, town, postcode, telephone, email):
     "update the product"
-    with sqlite3.connect(db_name) as db:
-        cursor = db.cursor()
-        cursor.execute("""
-                    UPDATE {0} SET FirstName=?, LastName=?, Street=?, Town=?, PostCode=?, TelephoneNumber=?, EMailAddress=?
-                    WHERE CustomerID=?
-                """.format(table_name), (firstname, lastname, street, town, postcode, telephone, email, customerid,))
-        db.commit()
+    sql = """
+            UPDATE {0} SET FirstName=?, LastName=?, Street=?, Town=?, PostCode=?, TelephoneNumber=?, EMailAddress=?
+            WHERE CustomerID=?
+            """.format(table_name)
+    query(db_name, sql, (firstname, lastname, street, town, postcode, telephone, email, customerid,))
 
 def delete_data(db_name, table_name, customerid):
     "delete the product from the table"
-    with sqlite3.connect(db_name) as db:
-        cursor = db.cursor()
-        cursor.execute("DELETE FROM {0} WHERE CustomerID=?".format(table_name), (customerid, ))
-        db.commit()
+    sql = "DELETE FROM {0} WHERE CustomerID=?".format(table_name)
+    query(db_name, sql, (customerid, ))
 
 def print_table(result):
     "show the data in a table"
