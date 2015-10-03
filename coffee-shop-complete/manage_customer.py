@@ -125,7 +125,7 @@ def manage_customer():
         elif response == 3:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            customer = int(input("input the customer ID: "))
+            customerid = int(input("input the customer ID: "))
             print("\n\tUpdate the customer information: ")
             firstname = input("\t\tFirst Name: ")
             lastname =  input("\t\tLast  Name: ")
@@ -142,13 +142,14 @@ def manage_customer():
                         town,
                         postcode,
                         telephone,
-                        email)
+                        email,
+                        customerid)
 
         elif response == 4:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            productid = int(input("\ninput the customer id to delete it: "))
-            delete_data(db_name, table_name, productid)
+            customerid = int(input("\ninput the customer id to delete it: "))
+            delete_data(db_name, table_name, customerid)
 
         elif response == 5:
             break
