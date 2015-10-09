@@ -109,7 +109,8 @@ def manage_order_item():
         elif response == 3:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            orderitemid = int(input("input the order item ID: "))
+
+            orderitemid = int(input("\tinput the order item ID: "))
             print("\n\tUpdate the order item information: ")
             orderid =    input("\t\tOrder ID: ")
             productid =  input("\t\tProduct ID: ")
@@ -124,7 +125,7 @@ def manage_order_item():
         elif response == 4:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            orderitemid = int(input("\ninput the order item id to delete it: "))
+            orderitemid = int(input("\n\tinput the order item id to delete it: "))
             delete_data(db_name, table_name, orderitemid)
 
         elif response == 5:

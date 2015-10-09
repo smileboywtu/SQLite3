@@ -4,6 +4,8 @@
 from manage_customer import manage_customer
 from manage_order import manage_order
 from manage_order_item import manage_order_item
+from manage_product import manage_product
+from manage_product_type import manage_product_type
 
 def print_menu():
     print("""

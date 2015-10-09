@@ -1,4 +1,4 @@
-# manage the customer order table
+# manage the product table
 # use the SQLite3 and Python 3.5
 
 # import
@@ -18,21 +18,21 @@ def show_all_data(db_name, table_name):
     sql = "SELECT * FROM {0}".format(table_name)
     return query(db_name, sql, ())
 
-def insert_data(db_name, table_name, date, time, customerid):
+def insert_data(db_name, table_name, name, price, producttypeid):
     "insert new data"
     sql = """
-            INSERT INTO {0}(Date, Time, CustomerID)
+            INSERT INTO {0}(Name, Price, ProductTypeID)
             VALUES (?,?,?)
             """.format(table_name)
-    query(db_name, sql,(date, time, customerid,))
+    query(db_name, sql,(name, price, producttypeid))
 
-def update_data(db_name, table_name, orderid, date, time, customerid):
+def update_data(db_name, table_name, productid, name, price, producttypeid):
     "update the product"
     sql = """
-            UPDATE {0} SET Date=?, Time=?, CustomerID=?
-            WHERE OrderID=?
+            UPDATE {0} SET Name=?, Price=?, ProductTypeID=?
+            WHERE ProductID=?
             """.format(table_name)
-    query(db_name, sql, (date, time, customerid, orderid,))
+    query(db_name, sql, (name, price, producttypeid, productid, ))
 
 def delete_data(db_name, table_name, productid):
     "delete the product from the table"
@@ -43,19 +43,19 @@ def print_table(result):
     "show the data in a table"
     print("""
 
-        |{0:^5s}|{1:^14s}|{2:^10s}|{3:^14s}|
+        |{0:^5s}|{1:^8s}|{2:^9s}|{3:^17s}|
         """.format("ID",
-                   "Date",
-                   "Time",
-                   "CustomerID"))
+                   "Name",
+                   "Price",
+                   "ProductTypeID"))
     for entry in result:
-        orderid, date, time, customerid = entry
+        productid, name, price, producttypeid = entry
         print("""
-        {0:^5d} {1:^14s} {2:^10s} {3:^14d}
-            """.format(orderid,
-                       date,
-                       time,
-                       customerid))
+        {0:^5d} {1:^8s} {2:^9s} {3:^17s}
+            """.format(productid,
+                       name,
+                       price,
+                       producttypeid))
 
 def ask_question(question, legal):
     "ask the user a question and return the result"
@@ -69,23 +69,23 @@ def print_menu():
     "print the manage menu"
     print("""
 
-        Manage The Customer Table:
+        Manage The Product Table:
 
-            1. show all the order
-            2. insert new data into order table
-            3. update the current order
+            1. show all product
+            2. insert new data into product table
+            3. update the current product
             4. delete order from repository
             5. return to parent
 
     """)
 
-def manage_order():
+def manage_product():
 
     legal = (1, 2, 3, 4, 5)
     question = "\tOperation(1,2,3,4,5): "
 
     db_name = "coffee_shop.db"
-    table_name = "CustomerOrder"
+    table_name = "Product"
 
     while 1:
         print_menu()
@@ -96,36 +96,36 @@ def manage_order():
             print_table(result)
 
         elif response == 2:
-            print("\tAdd new customer order: ")
-            date =       input("\t\tDate: ")
-            time =       input("\t\tTime: ")
-            customerid = input("\t\tCustomerID: ")
+            print("\tAdd new product: ")
+            name =  input("\t\tName: ")
+            price = input("\t\tPrice: ")
+            producttypeid = input("\t\tProductTypeID: ")
             insert_data(db_name,
                         table_name,
-                        date,
-                        time,
-                        customerid)
+                        name,
+                        price,
+                        producttypeid)
 
         elif response == 3:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            orderid = int(input("\tinput the order ID: "))
-            print("\n\tUpdate the order information: ")
-            date =       input("\t\tDate: ")
-            time =       input("\t\tTime: ")
-            customerid = input("\t\tCustomerID: ")
+            productid = int(input("\tinput the product ID: "))
+            print("\n\tUpdate the product information: ")
+            name =  input("\t\tName: ")
+            price = input("\t\tPrice: ")
+            producttypeid = input("\t\tProductTypeID: ")
             update_data(db_name,
                         table_name,
-                        orderid,
-                        date,
-                        time,
-                        customerid)
+                        productid,
+                        name,
+                        price,
+                        producttypeid)
 
         elif response == 4:
             result = show_all_data(db_name, table_name)
             print_table(result)
-            orderid = int(input("\n\tinput the order id to delete it: "))
-            delete_data(db_name, table_name, orderid)
+            productid = int(input("\n\tinput the product id to delete it: "))
+            delete_data(db_name, table_name, productid)
 
         elif response == 5:
             break
