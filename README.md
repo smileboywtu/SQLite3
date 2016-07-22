@@ -26,14 +26,20 @@ There is a tool for you to manage your local database which called **sqlitebrosw
     └── README.md
 
 
-+ Main Program:
->Python3 manage-menu.py
+## Usage
 
-+ Learn SQL:
->You can just switch to the deamon dir and look at the **PDF** for details
+you can run the program by:
+``` shell
+Python3 manage-menu.py
+```
 
-+ Know More:
->Just look at the other python source files
+## Learn SQL:
+
+You can just switch to the deamon dir and look at the **PDF** for details.
+
+## Know More:
+
+Just read the other python source files to know more details.
 
 # Online Tutorials
 
