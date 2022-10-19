@@ -45,6 +45,9 @@ Just read the other python source files to know more details.
 
 look at the online course [here][0]
 
+[SQL Tutorial][1]
+
 the complete coffee shop sample in the ./coffee-shop-complete dir.
 
 [0]: http://www.pythonschool.net/databases/introduction-to-databases/
+[1]: https://www.scaler.com/topics/sql/
